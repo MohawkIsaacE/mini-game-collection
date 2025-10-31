@@ -320,7 +320,7 @@ PrefabInstance:
     - target: {fileID: 480004523858723249, guid: 3b2581b8ed866f746acf8143ee14be90,
         type: 3}
       propertyPath: m_Name
-      value: 2025-team09-ship-player2
+      value: 2025-team09-player2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -470,7 +470,7 @@ PrefabInstance:
     - target: {fileID: 4577788559174076318, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
       propertyPath: m_Name
-      value: 2025-team09-ship-player1
+      value: 2025-team09-player1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
