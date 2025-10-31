@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 273782091859729189}
   - component: {fileID: 2935933690159508828}
-  - component: {fileID: 3745821509184164314}
   - component: {fileID: 5912792988326897560}
   - component: {fileID: 3111037690039454413}
+  - component: {fileID: -875036053308832775}
   m_Layer: 0
-  m_Name: 2025-team09-ship-player1
+  m_Name: 2025-team09-player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 772a421a033da7b44af4e98bded8cf4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5a335d129684a146b459c6e63ad707a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,27 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3745821509184164314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4577788559174076318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f32094e205f32fc47b63557c09441b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MiniGameManager>k__BackingField: {fileID: 0}
-  <PlayerID>k__BackingField: 0
-  <BulletPrefab>k__BackingField: {fileID: 6402966615391357958, guid: 0c147a97b0ec4644dbb6bb89f2e63e87,
-    type: 3}
-  <Rigidbody2D>k__BackingField: {fileID: 5912792988326897560}
-  <ScoreKeeper>k__BackingField: {fileID: 0}
-  <BulletSpeed>k__BackingField: 8
-  <ShipSpeed>k__BackingField: 10
-  <MinMaxY>k__BackingField: 4
 --- !u!50 &5912792988326897560
 Rigidbody2D:
   serializedVersion: 4
@@ -134,7 +113,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &3111037690039454413
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,3 +149,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &-875036053308832775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4577788559174076318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e97177d19c76b49a716dab516f3f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MiniGameManager>k__BackingField: {fileID: 0}
+  <PlayerID>k__BackingField: 0
+  <BulletPrefab>k__BackingField: {fileID: 0}
+  <Rigidbody2D>k__BackingField: {fileID: 5912792988326897560}
+  <ScoreKeeper>k__BackingField: {fileID: 0}
+  <BulletSpeed>k__BackingField: 8
+  <ShipSpeed>k__BackingField: 20
+  <MinMaxY>k__BackingField: 4.5
+  <MinMaxX>k__BackingField: 7.5
+  <CanShoot>k__BackingField: 0

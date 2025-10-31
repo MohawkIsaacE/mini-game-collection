@@ -9,8 +9,9 @@ namespace MiniGameCollection.Games2025.Team09
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
         [field: SerializeField] public ScoreKeeper ScoreKeeper { get; private set; }
         [field: SerializeField] public float BulletSpeed { get; private set; } = 8f; // units per second
-        [field: SerializeField] public float ShipSpeed { get; private set; } = 10f; // units per second
-        [field: SerializeField] public float MinMaxY { get; private set; } = 4f; // constraints along Y axis movement
+        [field: SerializeField] public float ShipSpeed { get; private set; } = 20f; // units per second
+        [field: SerializeField] public float MinMaxY { get; private set; } = 4.5f; // constraints along Y axis movement
+        [field: SerializeField] public float MinMaxX { get; private set; } = 7.5f; // constraints along X axis movement
         [field: SerializeField] public bool CanShoot { get; private set; } = false;
 
         private BulletOwner Owner => PlayerID switch
@@ -23,14 +24,28 @@ namespace MiniGameCollection.Games2025.Team09
 
         void Update()
         {
-            float axisX = ArcadeInput.Players[(int)PlayerID].AxisX;
+            // Get the joystick input
+            Vector2 playerMovement = ArcadeInput.Players[(int)PlayerID].Joystick8Way;
+
+            // Inverted movement for player 1
             if (PlayerID == PlayerID.Player1)
-                axisX = -axisX;
-            float movement = axisX * Time.deltaTime * ShipSpeed;
-            Vector3 newPosition = transform.position + new Vector3(0, movement, 0);
+            {
+                playerMovement = -playerMovement;
+            }
+
+            // Update the player position
+            float movementX = playerMovement.x * Time.deltaTime * ShipSpeed;
+            float movementY = -playerMovement.y * Time.deltaTime * ShipSpeed;
+            Vector3 newPosition = transform.position + new Vector3(movementY, movementX, 0);
+
+            // Keep the player in the map
             newPosition.y = Mathf.Clamp(newPosition.y, -MinMaxY, MinMaxY);
+            newPosition.x = Mathf.Clamp(newPosition.x, -MinMaxX, MinMaxX);
+            
+            // Move the player
             Rigidbody2D.MovePosition(newPosition);
 
+            // Old
             if (!CanShoot)
                 return;
             if (ArcadeInput.Players[(int)PlayerID].Action1.Pressed)
