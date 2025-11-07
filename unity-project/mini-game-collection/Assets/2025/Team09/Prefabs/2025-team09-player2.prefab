@@ -192,6 +192,7 @@ MonoBehaviour:
   bombProjectilePrefab: {fileID: 1956903470144574843, guid: f5ff929071d23d042945c9c43fd526ac,
     type: 3}
   throwForce: 8
+  throwAngleOffset: 0
 --- !u!120 &5918875123336122563
 LineRenderer:
   serializedVersion: 2
@@ -317,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 3454542577990116469, guid: bbc76dcbce4b4fe41a9e25a7c86de059,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3454542577990116469, guid: bbc76dcbce4b4fe41a9e25a7c86de059,
         type: 3}
