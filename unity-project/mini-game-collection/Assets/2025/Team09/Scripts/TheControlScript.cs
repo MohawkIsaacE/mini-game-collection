@@ -23,6 +23,7 @@ namespace MiniGameCollection.Games2025.Team09
         public float coinSpawnInterval = 3f;
         public float bombSpawnInterval = 3f;
         public float potionSpawnInterval = 3f;
+        public float waitForFirstTimeInterval = 3f;
 
         public int maxBombs = 4;
         public int maxGoldCoins = 15;
@@ -32,6 +33,7 @@ namespace MiniGameCollection.Games2025.Team09
         private float coinTimer = 0f;
         private float bombSpawnTimer = 0f;
         private float potionSpawnTimer = 0f;
+        private float waitForFirstTimeTimer = 0f;
 
         void Awake()
         {
@@ -59,62 +61,70 @@ namespace MiniGameCollection.Games2025.Team09
 
         void Update()
         {
-            coinTimer += Time.deltaTime;
-            bombSpawnTimer += Time.deltaTime;
-            potionSpawnTimer += Time.deltaTime;
-
-            // Bomb spawn with max limit
-            if (bombSpawnTimer >= bombSpawnInterval)
+            if (StartController.Instance.GameHasStarted == true)
             {
-                if (PickUpStorage.childCount < maxBombs)
-                    SpawnPickup(Bomb, PickUpStorage, 0.5f);
-                bombSpawnTimer = 0f;
-            }
-
-            // Potion spawn with max limit
-            if (potionSpawnTimer >= potionSpawnInterval)
-            {
-                int potionCount = 0;
-                foreach (Transform child in PickUpStorage)
+                
+                waitForFirstTimeTimer += Time.deltaTime;
+                if (waitForFirstTimeTimer >= waitForFirstTimeInterval) // Jonahs scuffed way of waiting 3 seconds before spawning
                 {
-                    if (child.gameObject.CompareTag("SpeedPotion"))
-                        potionCount++;
-                }
-
-                if (potionCount < maxPotions)
-                    SpawnPickup(SpeedPotion, PickUpStorage, 0.5f);
-
-                potionSpawnTimer = 0f;
-            }
-
-            // Coin spawn with max limits
-            if (coinTimer >= coinSpawnInterval)
-            {
-                int choice = Random.Range(0, 2);
-                if (choice == 0)
-                {
-                    int goldCount = 0;
-                    foreach (Transform child in CoinsStorage)
+                    coinTimer += Time.deltaTime;
+                    bombSpawnTimer += Time.deltaTime;
+                    potionSpawnTimer += Time.deltaTime;
+                    // Bomb spawn with max limit
+                    if (bombSpawnTimer >= bombSpawnInterval)
                     {
-                        if (child.gameObject.CompareTag("GoldCoin"))
-                            goldCount++;
+                        if (PickUpStorage.childCount < maxBombs)
+                            SpawnPickup(Bomb, PickUpStorage, 0.5f);
+                        bombSpawnTimer = 0f;
                     }
-                    if (goldCount < maxGoldCoins)
-                        SpawnPickup(GoldCoin, CoinsStorage, 0.3f);
-                }
-                else
-                {
-                    int silverCount = 0;
-                    foreach (Transform child in CoinsStorage)
-                    {
-                        if (child.gameObject.CompareTag("SilverCoin"))
-                            silverCount++;
-                    }
-                    if (silverCount < maxSilverCoins)
-                        SpawnPickup(SilverCoin, CoinsStorage, 0.3f);
-                }
 
-                coinTimer = 0f;
+                    // Potion spawn with max limit
+                    if (potionSpawnTimer >= potionSpawnInterval)
+                    {
+                        int potionCount = 0;
+                        foreach (Transform child in PickUpStorage)
+                        {
+                            if (child.gameObject.name == "SpeedPotion(Clone)")
+                                potionCount++;
+                        }
+
+                        if (potionCount < maxPotions)
+                            SpawnPickup(SpeedPotion, PickUpStorage, 0.5f);
+
+                        potionSpawnTimer = 0f;
+                    }
+
+                    // Coin spawn with max limits
+                    if (coinTimer >= coinSpawnInterval)
+                    {
+                        int choice = Random.Range(0, 2);
+                        if (choice == 0)
+                        {
+                            int goldCount = 0;
+                            foreach (Transform child in CoinsStorage)
+                            {
+                                if (child.gameObject.name == "GoldCoin(Clone)")
+                                    goldCount++;
+                            }
+                            if (goldCount < maxGoldCoins)
+                                SpawnPickup(GoldCoin, CoinsStorage, 0.3f);
+                        }
+                        else
+                        {
+                            int silverCount = 0;
+                            foreach (Transform child in CoinsStorage)
+                            {
+                                if (child.gameObject.name == "SilverCoin(Clone)")
+                                    silverCount++;
+                            }
+                            if (silverCount < maxSilverCoins)
+                                SpawnPickup(SilverCoin, CoinsStorage, 0.3f);
+                        }
+
+                        coinTimer = 0f;
+                    }
+                }
+                
             }
         }
 
