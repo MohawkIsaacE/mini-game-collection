@@ -987,6 +987,7 @@ MonoBehaviour:
   coinSpawnInterval: 3
   bombSpawnInterval: 3
   potionSpawnInterval: 12
+  waitForFirstTimeInterval: 3
   maxBombs: 2
   maxGoldCoins: 8
   maxSilverCoins: 15
@@ -1150,6 +1151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143885562766068458, guid: 3b2581b8ed866f746acf8143ee14be90,
+        type: 3}
+      propertyPath: <ShipSpeed>k__BackingField
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8143885562766068458, guid: 3b2581b8ed866f746acf8143ee14be90,
         type: 3}
@@ -4504,12 +4510,22 @@ PrefabInstance:
     - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
       propertyPath: <MinMaxX>k__BackingField
-      value: 9
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
       propertyPath: <MinMaxY>k__BackingField
-      value: 4.8
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
+        type: 3}
+      propertyPath: <CanShoot>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
+        type: 3}
+      propertyPath: <ShipSpeed>k__BackingField
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
@@ -5222,6 +5238,7 @@ Transform:
   - {fileID: 1881877024}
   - {fileID: 1669877398}
   - {fileID: 404452975}
+  - {fileID: 1871806722}
   m_Father: {fileID: 2112154846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1819155482
@@ -5852,7 +5869,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 5.25
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
