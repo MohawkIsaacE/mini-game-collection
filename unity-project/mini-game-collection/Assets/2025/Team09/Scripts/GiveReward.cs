@@ -2,72 +2,76 @@ using MiniGameCollection.Games2025.Team09;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GiveReward : MonoBehaviour
+namespace MiniGameCollection.Games2025.Team09
 {
-    public TheControlScript control;
-    public GameObject Player1;
-    public GameObject Player2;
-    void Awake()
-    {
-        if (Player1 == null)
-        {
-            Player1 = GameObject.Find("2025-team09-player1");
-        }
-        if (Player2 == null)
-        {
-            Player2 = GameObject.Find("2025-team09-player2");
-        }
-        // Automatically find the main game controller
-        if (control == null)
-            control = FindObjectOfType<TheControlScript>();
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class GiveReward : MonoBehaviour
     {
-        // Check if what touched us has a PlayerController
-        PlayerController player = collision.GetComponent<PlayerController>();
-
-        if (player != null) // It is a player
+        public TheControlScript control;
+        public GameObject Player1;
+        public GameObject Player2;
+        void Awake()
         {
-            Debug.Log("This game obj name is: " + this.gameObject.name);
-            if (this.gameObject.name == "SilverCoin(Clone)")
+            if (Player1 == null)
             {
-                if (player.PlayerID == PlayerID.Player1)
-                {
-                    control.GivePlayer1APoint(1);
-                }
-                else if (player.PlayerID == PlayerID.Player2)
-                {
-                    control.GivePlayer2APoint(1);
-                }
+                Player1 = GameObject.Find("2025-team09-player1");
             }
-            else if (this.gameObject.name == "GoldCoin(Clone)")
+            if (Player2 == null)
             {
-                if (player.PlayerID == PlayerID.Player1)
-                {
-                    control.GivePlayer1APoint(3);
-                }
-                else if (player.PlayerID == PlayerID.Player2)
-                {
-                    control.GivePlayer2APoint(3);
-                }
+                Player2 = GameObject.Find("2025-team09-player2");
             }
-            else if (this.gameObject.name == "BombPickup(Clone)")
+            // Automatically find the main game controller
+            if (control == null)
+                control = FindObjectOfType<TheControlScript>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            // Check if what touched us has a PlayerController
+            PlayerController player = collision.GetComponent<PlayerController>();
+
+            if (player != null) // It is a player
             {
-                Debug.Log("Picking up");
-                // Only players can pick up
-                ItemController itemController = collision.GetComponent<ItemController>();
-                if (itemController != null && !itemController.HasBomb)
+                Debug.Log("This game obj name is: " + this.gameObject.name);
+                if (this.gameObject.name == "SilverCoin(Clone)")
                 {
-                    itemController.PickUpBomb(); // Activate the bomb visual
-                    Destroy(gameObject); // Remove the pickup from the scene
+                    if (player.PlayerID == PlayerID.Player1)
+                    {
+                        control.GivePlayer1APoint(1);
+                    }
+                    else if (player.PlayerID == PlayerID.Player2)
+                    {
+                        control.GivePlayer2APoint(1);
+                    }
                 }
-            }
-            else if (this.gameObject.name == "SpeedPotion(Clone)")
-            {
-                player.GetComponent<PlayerController>().ApplySpeedPotion(2f, 4f);
-            }
+                else if (this.gameObject.name == "GoldCoin(Clone)")
+                {
+                    if (player.PlayerID == PlayerID.Player1)
+                    {
+                        control.GivePlayer1APoint(3);
+                    }
+                    else if (player.PlayerID == PlayerID.Player2)
+                    {
+                        control.GivePlayer2APoint(3);
+                    }
+                }
+                else if (this.gameObject.name == "BombPickup(Clone)")
+                {
+                    Debug.Log("Picking up");
+                    // Only players can pick up
+                    ItemController itemController = collision.GetComponent<ItemController>();
+                    if (itemController != null && !itemController.HasBomb)
+                    {
+                        itemController.PickUpBomb(); // Activate the bomb visual
+                        Destroy(gameObject); // Remove the pickup from the scene
+                    }
+                }
+                else if (this.gameObject.name == "SpeedPotion(Clone)")
+                {
+                    player.GetComponent<PlayerController>().ApplySpeedPotion(2f, 4f);
+                }
                 Destroy(gameObject); //  Remove the coin
+            }
         }
     }
 }
