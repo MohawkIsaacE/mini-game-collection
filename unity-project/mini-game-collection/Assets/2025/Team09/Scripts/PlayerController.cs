@@ -12,7 +12,7 @@ namespace MiniGameCollection.Games2025.Team09
         [field: SerializeField] public float BulletSpeed { get; private set; } = 8f;
         [field: SerializeField] public float ShipSpeed { get; private set; } = 20f;
         [field: SerializeField] public float MinMaxY { get; private set; } = 4.5f;
-        [field: SerializeField] public float MinMaxX { get; private set; } = 7.5f;
+        [field: SerializeField] public float MinMaxX { get; private set; } = 9f;
         [field: SerializeField] public bool CanShoot { get; private set; } = false;
 
         private float speedMultiplier = 1f; // For speed potions or debuffs
@@ -42,7 +42,7 @@ namespace MiniGameCollection.Games2025.Team09
                 return;
 
             // Apply speed multiplier
-            Vector3 movement = new Vector3(playerMovement.x, playerMovement.y, 0f) * ShipSpeed * speedMultiplier * Time.deltaTime;
+            Vector3 movement = new Vector3(-playerMovement.y, playerMovement.x, 0f) * ShipSpeed * speedMultiplier * Time.deltaTime;
             Vector3 newPosition = transform.position + movement;
 
             // Clamp to map boundaries
@@ -52,8 +52,9 @@ namespace MiniGameCollection.Games2025.Team09
             Rigidbody2D.MovePosition(newPosition);
 
             // Rotate player to face movement direction
-            float angle = Mathf.Atan2(playerMovement.y, playerMovement.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(-playerMovement.x, playerMovement.y) * Mathf.Rad2Deg;
             float angleOffset = 0f; // adjust depending on sprite
+            if (PlayerID == PlayerID.Player1) angleOffset = 180f;
             transform.rotation = Quaternion.Euler(0f, 0f, angle + angleOffset);
         }
 
