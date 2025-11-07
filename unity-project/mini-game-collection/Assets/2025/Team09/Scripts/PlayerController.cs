@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace MiniGameCollection.Games2025.Team09
@@ -8,11 +9,14 @@ namespace MiniGameCollection.Games2025.Team09
         [field: SerializeField] public GameObject BulletPrefab { get; private set; }
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
         [field: SerializeField] public ScoreKeeper ScoreKeeper { get; private set; }
-        [field: SerializeField] public float BulletSpeed { get; private set; } = 8f; // units per second
-        [field: SerializeField] public float ShipSpeed { get; private set; } = 20f; // units per second
-        [field: SerializeField] public float MinMaxY { get; private set; } = 4.5f; // constraints along Y axis movement
-        [field: SerializeField] public float MinMaxX { get; private set; } = 7.5f; // constraints along X axis movement
+        [field: SerializeField] public float BulletSpeed { get; private set; } = 8f;
+        [field: SerializeField] public float ShipSpeed { get; private set; } = 20f;
+        [field: SerializeField] public float MinMaxY { get; private set; } = 4.5f;
+        [field: SerializeField] public float MinMaxX { get; private set; } = 7.5f;
         [field: SerializeField] public bool CanShoot { get; private set; } = false;
+
+        private float speedMultiplier = 1f; // For speed potions or debuffs
+        private SpriteRenderer spriteRenderer;
 
         private BulletOwner Owner => PlayerID switch
         {
@@ -21,35 +25,36 @@ namespace MiniGameCollection.Games2025.Team09
             _ => throw new System.Exception(),
         };
 
+        void Start()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
         void Update()
         {
-            // Get the joystick input
             Vector2 playerMovement = ArcadeInput.Players[(int)PlayerID].Joystick8Way;
 
-            // Inverted movement for player 1
+            // Invert for Player1 if needed
             if (PlayerID == PlayerID.Player1)
-            {
                 playerMovement = -playerMovement;
-            }
 
-            // Update the player position
-            float movementX = playerMovement.x * Time.deltaTime * ShipSpeed;
-            float movementY = -playerMovement.y * Time.deltaTime * ShipSpeed;
-            Vector3 newPosition = transform.position + new Vector3(movementY, movementX, 0);
+            if (playerMovement.sqrMagnitude < 0.01f)
+                return;
 
-            // Keep the player in the map
-            newPosition.y = Mathf.Clamp(newPosition.y, -MinMaxY, MinMaxY);
+            // Apply speed multiplier
+            Vector3 movement = new Vector3(playerMovement.x, playerMovement.y, 0f) * ShipSpeed * speedMultiplier * Time.deltaTime;
+            Vector3 newPosition = transform.position + movement;
+
+            // Clamp to map boundaries
             newPosition.x = Mathf.Clamp(newPosition.x, -MinMaxX, MinMaxX);
-            
-            // Move the player
+            newPosition.y = Mathf.Clamp(newPosition.y, -MinMaxY, MinMaxY);
+
             Rigidbody2D.MovePosition(newPosition);
 
-            // Old
-            if (!CanShoot)
-                return;
-            if (ArcadeInput.Players[(int)PlayerID].Action1.Pressed)
-                ShootBullet();
+            // Rotate player to face movement direction
+            float angle = Mathf.Atan2(playerMovement.y, playerMovement.x) * Mathf.Rad2Deg;
+            float angleOffset = 0f; // adjust depending on sprite
+            transform.rotation = Quaternion.Euler(0f, 0f, angle + angleOffset);
         }
 
         void ShootBullet()
@@ -74,6 +79,31 @@ namespace MiniGameCollection.Games2025.Team09
         protected override void OnGameEnd()
         {
             CanShoot = false;
+        }
+
+        // =========================
+        // Speed potion system
+        // =========================
+        public void ApplySpeedPotion(float multiplier, float duration)
+        {
+            StopCoroutine("SpeedPotionRoutine");
+            StartCoroutine(SpeedPotionRoutine(multiplier, duration));
+        }
+
+        private IEnumerator SpeedPotionRoutine(float multiplier, float duration)
+        {
+            speedMultiplier = multiplier;
+
+            // Optional: show visual feedback (change color)
+            if (spriteRenderer != null)
+                spriteRenderer.color = Color.cyan;
+
+            yield return new WaitForSeconds(duration);
+
+            speedMultiplier = 1f;
+
+            if (spriteRenderer != null)
+                spriteRenderer.color = Color.white;
         }
     }
 }
