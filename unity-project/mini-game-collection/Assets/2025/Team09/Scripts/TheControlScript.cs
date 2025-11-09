@@ -65,7 +65,7 @@ namespace MiniGameCollection.Games2025.Team09
             {
                 
                 waitForFirstTimeTimer += Time.deltaTime;
-                if (waitForFirstTimeTimer >= waitForFirstTimeInterval) // Jonahs scuffed way of waiting 3 seconds before spawning
+                if (waitForFirstTimeTimer >= waitForFirstTimeInterval && MiniGameScoreKeeper.GetComponent<MiniGameManager>().TimeFloat > 0) // Jonahs scuffed way of waiting 3 seconds before spawning
                 {
                     coinTimer += Time.deltaTime;
                     bombSpawnTimer += Time.deltaTime;
