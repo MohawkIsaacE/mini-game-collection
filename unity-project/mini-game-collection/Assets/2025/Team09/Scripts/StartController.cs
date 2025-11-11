@@ -1,5 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using static MiniGameCollection.ArcadeInput;
 
 namespace MiniGameCollection.Games2025.Team09
 {
@@ -13,10 +17,14 @@ namespace MiniGameCollection.Games2025.Team09
         public bool GameHasStarted = false;
         public bool player1Ready = false;
         public bool player2Ready = false;
+        public GameObject player1Obj; 
+        public GameObject player2Obj;
 
         [field: SerializeField] MiniGameManager MiniGameManager;
         private void Awake()
         {
+            player1Obj = GameObject.Find("2025-team09-player1");
+            player2Obj = GameObject.Find("2025-team09-player2");
             // Singleton enforcement
             if (Instance != null && Instance != this)
             {
@@ -68,6 +76,25 @@ namespace MiniGameCollection.Games2025.Team09
             StartGameUI.SetActive(true);
             GameUI.SetActive(false);
         }
+        public IEnumerator StunPlayerController(PlayerController pc, float duration)
+        {
+            // Get SpriteRenderer from the same GameObject as PlayerController
+            SpriteRenderer sr = pc.gameObject.GetComponent<SpriteRenderer>();
+            if (sr != null)
+                sr.color = Color.red; // show stunned
+
+            pc.enabled = false; // stop movement/input
+            Rigidbody2D rb = pc.gameObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+                rb.velocity = Vector2.zero; // freeze movement
+
+            yield return new WaitForSeconds(duration);
+
+            // Restore
+            pc.enabled = true;
+            if (sr != null)
+                sr.color = Color.white; // back to normal
+        }
         void StartGame()
         {
             // Start mini game
@@ -75,6 +102,11 @@ namespace MiniGameCollection.Games2025.Team09
             MiniGameManager.StartGame();
             StartGameUI.SetActive(false);
             GameUI.SetActive(true);
+            
+            var player1 = player1Obj.GetComponent<PlayerController>();
+            var player2 = player2Obj.GetComponent<PlayerController>();
+            StartCoroutine(StunPlayerController(player1, 3f));
+            StartCoroutine(StunPlayerController(player2, 3f));
         }
     }
 }
