@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using static MiniGameCollection.ArcadeInput;
 
 namespace MiniGameCollection.Games2025.Team09
@@ -20,11 +21,33 @@ namespace MiniGameCollection.Games2025.Team09
         public GameObject player1Obj; 
         public GameObject player2Obj;
 
+        public GameObject GameCamera;
+
         [field: SerializeField] MiniGameManager MiniGameManager;
         private void Awake()
         {
             player1Obj = GameObject.Find("2025-team09-player1");
             player2Obj = GameObject.Find("2025-team09-player2");
+
+            // Find the camera object
+            GameCamera = GameObject.Find("Pixel Perfect Camera");
+
+            // Randomly choose which map to use
+            int whichMap = Random.Range(0, 2);
+            // Hard coding my beloved - Isaac
+            if (whichMap == 0)
+            {
+                player1Obj.transform.position = new Vector3(-7, 0, 0);
+                player2Obj.transform.position = new Vector3(7, 0, 0);
+                GameCamera.transform.position = new Vector3(0, 0, -10);
+            }
+            else if (whichMap == 1)
+            {
+                player1Obj.transform.position = new Vector3(-7, -15.89f, 0);
+                player2Obj.transform.position = new Vector3(7, -15.89f, 0);
+                GameCamera.transform.position = new Vector3(0, -15.89f, -10);
+            }
+
             // Singleton enforcement
             if (Instance != null && Instance != this)
             {

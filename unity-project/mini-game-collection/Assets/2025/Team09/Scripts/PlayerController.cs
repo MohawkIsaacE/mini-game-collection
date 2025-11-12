@@ -10,7 +10,7 @@ namespace MiniGameCollection.Games2025.Team09
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
         [field: SerializeField] public ScoreKeeper ScoreKeeper { get; private set; }
         [field: SerializeField] public float BulletSpeed { get; private set; } = 8f;
-        [field: SerializeField] public float ShipSpeed { get; private set; } = 20f;
+        [field: SerializeField] public float ShipSpeed { get; private set; } = 10f;
         [field: SerializeField] public float MinMaxY { get; private set; } = 4.5f;
         [field: SerializeField] public float MinMaxX { get; private set; } = 9f;
         [field: SerializeField] public bool CanShoot { get; private set; } = false;
@@ -46,8 +46,8 @@ namespace MiniGameCollection.Games2025.Team09
             Vector3 newPosition = transform.position + movement;
 
             // Clamp to map boundaries
-            newPosition.x = Mathf.Clamp(newPosition.x, -MinMaxX, MinMaxX);
-            newPosition.y = Mathf.Clamp(newPosition.y, -MinMaxY, MinMaxY);
+            //newPosition.x = Mathf.Clamp(newPosition.x, -MinMaxX, MinMaxX);
+            //newPosition.y = Mathf.Clamp(newPosition.y, -MinMaxY, MinMaxY);
 
             Rigidbody2D.MovePosition(newPosition);
 
