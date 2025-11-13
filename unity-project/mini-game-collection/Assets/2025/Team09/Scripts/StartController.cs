@@ -76,7 +76,7 @@ namespace MiniGameCollection.Games2025.Team09
             if (ArcadeInput.Players[(int)PlayerID.Player1].Action1.Pressed)
             {
                 Player1Ready.GetComponent<TextMeshProUGUI>().text = "Player 1: Ready";
-                Debug.Log("Player 1 pressed START/FIRE");
+                //Debug.Log("Player 1 pressed START/FIRE");
                 player1Ready = true;
                 //StartGame();
             }
@@ -86,7 +86,7 @@ namespace MiniGameCollection.Games2025.Team09
             {
                 player2Ready = true;
                 Player2Ready.GetComponent<TextMeshProUGUI>().text = "Player 2: Ready";
-                Debug.Log("Player 2 pressed START/FIRE");
+                //Debug.Log("Player 2 pressed START/FIRE");
                 //StartGame();
             }
             if (player1Ready && player2Ready && GameHasStarted == false)

@@ -1777,6 +1777,17 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5313969019082303925, guid: 3b2581b8ed866f746acf8143ee14be90,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543608214829412279, guid: 3b2581b8ed866f746acf8143ee14be90,
+        type: 3}
+      propertyPath: bombVisual
+      value: 
+      objectReference: {fileID: 1956903470144574843, guid: bbc76dcbce4b4fe41a9e25a7c86de059,
+        type: 3}
     - target: {fileID: 8143885562766068458, guid: 3b2581b8ed866f746acf8143ee14be90,
         type: 3}
       propertyPath: <MinMaxX>k__BackingField
@@ -1785,13 +1796,18 @@ PrefabInstance:
     - target: {fileID: 8143885562766068458, guid: 3b2581b8ed866f746acf8143ee14be90,
         type: 3}
       propertyPath: <ShipSpeed>k__BackingField
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8143885562766068458, guid: 3b2581b8ed866f746acf8143ee14be90,
         type: 3}
       propertyPath: <MiniGameManager>k__BackingField
       value: 
       objectReference: {fileID: 1054913965}
+    - target: {fileID: 9036001882613913787, guid: 3b2581b8ed866f746acf8143ee14be90,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7441,7 +7457,7 @@ PrefabInstance:
     - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
       propertyPath: <ShipSpeed>k__BackingField
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
@@ -7498,6 +7514,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1904767826356845367, guid: fb2d92cafc5afb745944e69a469aadce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518228343985271971, guid: fb2d92cafc5afb745944e69a469aadce,
+        type: 3}
+      propertyPath: bombVisual
+      value: 
+      objectReference: {fileID: 1956903470144574843, guid: bbc76dcbce4b4fe41a9e25a7c86de059,
+        type: 3}
     - target: {fileID: 2935933690159508828, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
       propertyPath: m_SortingOrder

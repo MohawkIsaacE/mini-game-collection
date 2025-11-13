@@ -92,8 +92,8 @@ namespace MiniGameCollection.Games2025.Team09
                 var player = hit.GetComponent<PlayerController>();
                 if (player != null)
                 {
-                    Debug.Log("Hit a player");
-                    Debug.Log(player.gameObject.GetComponent<PlayerController>().isActiveAndEnabled);
+                    //Debug.Log("Hit a player");
+                    //Debug.Log(player.gameObject.GetComponent<PlayerController>().isActiveAndEnabled);
                     //player.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                     StartCoroutine(StunPlayerController(player, 2f)); // <-- Use StartCoroutine
                     //player.gameObject.GetComponent<SpriteRenderer>().color = Color.white;

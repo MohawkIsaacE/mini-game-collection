@@ -43,20 +43,20 @@ namespace MiniGameCollection.Games2025.Team09
 
         void Start()
         {
-            Debug.Log("Player 1 score: " + MiniGameScoreKeeper.GetComponent<ScoreKeeper>().P1Score);
-            Debug.Log("Player 2 score: " + MiniGameScoreKeeper.GetComponent<ScoreKeeper>().P2Score);
+            //Debug.Log("Player 1 score: " + MiniGameScoreKeeper.GetComponent<ScoreKeeper>().P1Score);
+            //Debug.Log("Player 2 score: " + MiniGameScoreKeeper.GetComponent<ScoreKeeper>().P2Score);
         }
 
         public void GivePlayer1APoint(int rewardAmount)
         {
             MiniGameScoreKeeper.GetComponent<ScoreKeeper>().AddScore(PlayerID.Player1, rewardAmount);
-            Debug.Log("Player 1 stats increased!");
+            //Debug.Log("Player 1 stats increased!");
         }
 
         public void GivePlayer2APoint(int rewardAmount)
         {
             MiniGameScoreKeeper.GetComponent<ScoreKeeper>().AddScore(PlayerID.Player2, rewardAmount);
-            Debug.Log("Player 2 stats increased!");
+            //Debug.Log("Player 2 stats increased!");
         }
 
         void Update()
@@ -84,7 +84,7 @@ namespace MiniGameCollection.Games2025.Team09
                         int potionCount = 0;
                         foreach (Transform child in PickUpStorage)
                         {
-                            if (child.gameObject.name == "SpeedPotion(Clone)")
+                            if (child.gameObject.name == "2025-team09-SpeedPotion(Clone)")
                                 potionCount++;
                         }
 
@@ -103,7 +103,7 @@ namespace MiniGameCollection.Games2025.Team09
                             int goldCount = 0;
                             foreach (Transform child in CoinsStorage)
                             {
-                                if (child.gameObject.name == "GoldCoin(Clone)")
+                                if (child.gameObject.name == "2025-team09-GoldCoin(Clone)")
                                     goldCount++;
                             }
                             if (goldCount < maxGoldCoins)
@@ -114,7 +114,7 @@ namespace MiniGameCollection.Games2025.Team09
                             int silverCount = 0;
                             foreach (Transform child in CoinsStorage)
                             {
-                                if (child.gameObject.name == "SilverCoin(Clone)")
+                                if (child.gameObject.name == "2025-team09-SilverCoin(Clone)")
                                     silverCount++;
                             }
                             if (silverCount < maxSilverCoins)
@@ -147,7 +147,7 @@ namespace MiniGameCollection.Games2025.Team09
                 }
             }
 
-            Debug.LogWarning($"Could not find valid spawn position for {prefab.name} after {maxAttempts} attempts.");
+            //Debug.LogWarning($"Could not find valid spawn position for {prefab.name} after {maxAttempts} attempts.");
         }
     }
 }

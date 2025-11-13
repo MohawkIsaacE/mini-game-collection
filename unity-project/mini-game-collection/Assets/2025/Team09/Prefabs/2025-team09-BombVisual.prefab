@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7421785211273208702}
   - component: {fileID: 1364813425490206067}
   m_Layer: 0
-  m_Name: BombVisual
+  m_Name: 2025-team09-BombVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

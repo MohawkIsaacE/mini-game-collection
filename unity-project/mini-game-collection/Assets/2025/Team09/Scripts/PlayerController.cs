@@ -6,24 +6,16 @@ namespace MiniGameCollection.Games2025.Team09
     public class PlayerController : MiniGameBehaviour
     {
         [field: SerializeField] public PlayerID PlayerID { get; private set; }
-        [field: SerializeField] public GameObject BulletPrefab { get; private set; }
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
         [field: SerializeField] public ScoreKeeper ScoreKeeper { get; private set; }
         [field: SerializeField] public float BulletSpeed { get; private set; } = 8f;
-        [field: SerializeField] public float ShipSpeed { get; private set; } = 10f;
+        [field: SerializeField] public float ShipSpeed { get; private set; } = 40f;
         [field: SerializeField] public float MinMaxY { get; private set; } = 4.5f;
         [field: SerializeField] public float MinMaxX { get; private set; } = 9f;
         [field: SerializeField] public bool CanShoot { get; private set; } = false;
 
         private float speedMultiplier = 1f; // For speed potions or debuffs
         private SpriteRenderer spriteRenderer;
-
-        private BulletOwner Owner => PlayerID switch
-        {
-            PlayerID.Player1 => BulletOwner.Player1,
-            PlayerID.Player2 => BulletOwner.Player2,
-            _ => throw new System.Exception(),
-        };
 
         void Start()
         {
@@ -58,13 +50,13 @@ namespace MiniGameCollection.Games2025.Team09
             transform.rotation = Quaternion.Euler(0f, 0f, angle + angleOffset);
         }
 
-        void ShootBullet()
-        {
-            Vector3 position = transform.position + transform.up;
-            GameObject prefab = Instantiate(BulletPrefab, position, transform.rotation);
-            Bullet bullet = prefab.GetComponent<Bullet>();
-            bullet.Shoot(Owner, transform.up, BulletSpeed, ScoreKeeper, MiniGameManager);
-        }
+        //void ShootBullet()
+        //{
+        //    Vector3 position = transform.position + transform.up;
+        //    GameObject prefab = Instantiate(BulletPrefab, position, transform.rotation);
+        //    Bullet bullet = prefab.GetComponent<Bullet>();
+        //    bullet.Shoot(Owner, transform.up, BulletSpeed, ScoreKeeper, MiniGameManager);
+        //}
 
         private void OnValidate()
         {

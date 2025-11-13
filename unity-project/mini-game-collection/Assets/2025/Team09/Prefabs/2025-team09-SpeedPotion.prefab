@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7516357379608088075}
   - component: {fileID: -3893826543254352894}
   m_Layer: 0
-  m_Name: SpeedPotion
+  m_Name: 2025-team09-SpeedPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,6 +5,8 @@ namespace MiniGameCollection.Games2025.Team09
     [RequireComponent(typeof(LineRenderer))]
     public class ItemController : MonoBehaviour
     {
+        [field: SerializeField] public PlayerID PlayerID { get; private set; }
+
         public bool HasBomb = false;
         public GameObject bombVisual;           // The Bomb object on the player
         public GameObject bombProjectilePrefab; // The prefab for throwing
@@ -65,7 +67,7 @@ namespace MiniGameCollection.Games2025.Team09
 
         void ThrowBomb()
         {
-            Debug.Log("Throwing bomb");
+            //Debug.Log("Throwing bomb");
 
             GameObject bomb = Instantiate(bombProjectilePrefab, transform.position, transform.rotation);
 
@@ -75,7 +77,14 @@ namespace MiniGameCollection.Games2025.Team09
                 // Rotate facing direction by the adjustable offset
                 float angleRad = (transform.eulerAngles.z + throwAngleOffset) * Mathf.Deg2Rad;
                 Vector2 throwDir = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
-                rb.velocity = throwDir * throwForce;
+                if (PlayerID == PlayerID.Player1)
+                {
+                    rb.velocity = throwDir * throwForce;
+                }
+                else
+                {
+                    rb.velocity = -throwDir * throwForce;
+                }
             }
 
             HasBomb = false;
@@ -94,9 +103,18 @@ namespace MiniGameCollection.Games2025.Team09
             Vector2 velocity = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)) * throwForce;
 
             float predictionTime = 1f;
-            Vector2 end = start + velocity * predictionTime;
 
-            lineRenderer.SetPosition(0, start);
+            Vector2 end;
+            if (PlayerID == PlayerID.Player1)
+            {
+                end = start + velocity * predictionTime;
+            }
+            else
+            {
+                end = start + -velocity * predictionTime;
+            }
+
+                lineRenderer.SetPosition(0, start);
             lineRenderer.SetPosition(1, end);
         }
 

@@ -166,8 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MiniGameManager>k__BackingField: {fileID: 0}
   <PlayerID>k__BackingField: 1
-  <BulletPrefab>k__BackingField: {fileID: 1956903470144574843, guid: f5ff929071d23d042945c9c43fd526ac,
-    type: 3}
   <Rigidbody2D>k__BackingField: {fileID: 1586495489242755929}
   <ScoreKeeper>k__BackingField: {fileID: 0}
   <BulletSpeed>k__BackingField: 8
@@ -187,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afae28e86c5353745b533cf5c4940aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlayerID>k__BackingField: 1
   HasBomb: 0
   bombVisual: {fileID: 9036001882613913787}
   bombProjectilePrefab: {fileID: 1956903470144574843, guid: f5ff929071d23d042945c9c43fd526ac,

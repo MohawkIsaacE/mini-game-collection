@@ -32,8 +32,8 @@ namespace MiniGameCollection.Games2025.Team09
 
             if (player != null) // It is a player
             {
-                Debug.Log("This game obj name is: " + this.gameObject.name);
-                if (this.gameObject.name == "SilverCoin(Clone)")
+                //Debug.Log("This game obj name is: " + this.gameObject.name);
+                if (this.gameObject.name == "2025-team09-SilverCoin(Clone)")
                 {
                     if (player.PlayerID == PlayerID.Player1)
                     {
@@ -44,7 +44,7 @@ namespace MiniGameCollection.Games2025.Team09
                         control.GivePlayer2APoint(1);
                     }
                 }
-                else if (this.gameObject.name == "GoldCoin(Clone)")
+                else if (this.gameObject.name == "2025-team09-GoldCoin(Clone)")
                 {
                     if (player.PlayerID == PlayerID.Player1)
                     {
@@ -55,9 +55,9 @@ namespace MiniGameCollection.Games2025.Team09
                         control.GivePlayer2APoint(3);
                     }
                 }
-                else if (this.gameObject.name == "BombPickup(Clone)")
+                else if (this.gameObject.name == "2025-team09-BombPickup(Clone)")
                 {
-                    Debug.Log("Picking up");
+                    //Debug.Log("Picking up");
                     // Only players can pick up
                     ItemController itemController = collision.GetComponent<ItemController>();
                     if (itemController != null && !itemController.HasBomb)
@@ -66,7 +66,7 @@ namespace MiniGameCollection.Games2025.Team09
                         Destroy(gameObject); // Remove the pickup from the scene
                     }
                 }
-                else if (this.gameObject.name == "SpeedPotion(Clone)")
+                else if (this.gameObject.name == "2025-team09-SpeedPotion(Clone)")
                 {
                     player.GetComponent<PlayerController>().ApplySpeedPotion(2f, 4f);
                 }

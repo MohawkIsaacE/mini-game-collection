@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: -4249249636327860284}
   - component: {fileID: 9030803472529490331}
   m_Layer: 0
-  m_Name: BombPickup
+  m_Name: 2025-team09-PlayerBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3454542577990116469
 Transform:
   m_ObjectHideFlags: 0
