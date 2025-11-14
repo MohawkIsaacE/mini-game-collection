@@ -169,7 +169,7 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 1586495489242755929}
   <ScoreKeeper>k__BackingField: {fileID: 0}
   <BulletSpeed>k__BackingField: 8
-  <ShipSpeed>k__BackingField: 40
+  <ShipSpeed>k__BackingField: 12
   <MinMaxY>k__BackingField: 4.5
   <MinMaxX>k__BackingField: 7.5
   <CanShoot>k__BackingField: 0

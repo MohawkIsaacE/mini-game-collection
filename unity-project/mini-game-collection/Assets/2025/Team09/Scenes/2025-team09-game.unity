@@ -1796,7 +1796,7 @@ PrefabInstance:
     - target: {fileID: 8143885562766068458, guid: 3b2581b8ed866f746acf8143ee14be90,
         type: 3}
       propertyPath: <ShipSpeed>k__BackingField
-      value: 40
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8143885562766068458, guid: 3b2581b8ed866f746acf8143ee14be90,
         type: 3}
@@ -7216,10 +7216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd21ad0e6debff94cae9627a7fde0658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MiniGameManager>k__BackingField: {fileID: 1054913965}
-  <MiniGameScoreUI>k__BackingField: {fileID: 2085191115}
-  <P1Score>k__BackingField: 0
-  <P2Score>k__BackingField: 0
 --- !u!1 &1129203241
 GameObject:
   m_ObjectHideFlags: 0
@@ -7457,7 +7453,7 @@ PrefabInstance:
     - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
       propertyPath: <ShipSpeed>k__BackingField
-      value: 40
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -875036053308832775, guid: fb2d92cafc5afb745944e69a469aadce,
         type: 3}
@@ -9867,18 +9863,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2085191115 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1776563933004757632, guid: a57f4cff1dd5dbf4d9290d760c7147e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 85595588}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207fbdc81a91e8b4daa790f29d9b239d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &2085191119 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6578806774889222003, guid: a57f4cff1dd5dbf4d9290d760c7147e4,
